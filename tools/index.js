@@ -13,6 +13,11 @@ function apiKeyMiddleware(req, res, next) {
 
 function criarUsuarioFirebase(email, senha) {
 
+if (!firebaseAuth) {
+  console.error('Firebase não configurado. Defina as variáveis no .env para habilitar o cadastro.');
+  return;
+}
+
 
 createUserWithEmailAndPassword(
     firebaseAuth, 

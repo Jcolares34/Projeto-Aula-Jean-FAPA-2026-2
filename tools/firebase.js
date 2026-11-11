@@ -17,11 +17,13 @@ const firebaseConfig = {
   appId: process.env.appId
 };
 
-// Initialize Firebase
-const fireabseApp = initializeApp(firebaseConfig);
+const hasFirebaseConfig = Boolean(firebaseConfig.apiKey);
+
+// Initialize Firebase only when credentials are available.
+const fireabseApp = hasFirebaseConfig ? initializeApp(firebaseConfig) : null;
 
 // Initialize Firebase Authentication and get a reference to the service
-const firebaseAuth = getAuth(fireabseApp);
+const firebaseAuth = fireabseApp ? getAuth(fireabseApp) : null;
 
 
 

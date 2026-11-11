@@ -1,5 +1,6 @@
+name: sistemas_distribuidos
+
 services:
-  name: Sistemas_Distribidos
   db:
     image: postgres:16
     container_name: aula_postgres_db
@@ -9,9 +10,10 @@ services:
       POSTGRES_PASSWORD: minhasenha
       POSTGRES_DB: meubanco
     ports:
-      - "5432:5432"
+      - "55432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-#      - /meu_caminho_local/dados:/var/lib/postgresql/dataß
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+
 volumes:
   pgdata:
